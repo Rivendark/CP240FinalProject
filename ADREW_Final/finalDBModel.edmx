@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="finalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="finalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DepartmentPositions">
           <Key>
             <PropertyRef Name="PositionID" />
@@ -30,6 +30,7 @@
           <Property Name="DOB" Type="date" />
           <Property Name="EEmail" Type="varchar" MaxLength="100" />
           <Property Name="EAddress" Type="varchar" MaxLength="200" />
+          <Property Name="ECity" Type="varchar" MaxLength="100" />
           <Property Name="Zip" Type="varchar" MaxLength="10" />
           <Property Name="EState" Type="varchar" MaxLength="2" />
           <Property Name="EPhone" Type="varchar" MaxLength="15" />
@@ -48,9 +49,9 @@
           </Key>
           <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="MI" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="FName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MI" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DateOfHire" Type="date" Nullable="false" />
           <Property Name="PositionID" Type="int" Nullable="false" />
         </EntityType>
@@ -78,8 +79,9 @@
           <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Descr" Type="varchar" MaxLength="512" Nullable="false" />
-          <Property Name="StartDate" Type="date" Nullable="false" />
-          <Property Name="CompletionDate" Type="date" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="CompletionDate" Type="datetime" Nullable="false" />
           <Property Name="IsMilestone" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TasksDepartmentLink">
@@ -469,7 +471,8 @@
             <End Role="Wages" EntitySet="Wages" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="finalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -482,8 +485,8 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Department" Relationship="Self.FK__Departmen__Depar__145C0A3F" FromRole="DepartmentPositions" ToRole="Departments" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Posit__239E4DCF" FromRole="DepartmentPositions" ToRole="Employees" />
-          <NavigationProperty Name="Tasks" Relationship="finalDBModel.TasksDepartmentPositionLink" FromRole="DepartmentPosition" ToRole="Task" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Posit__1920BF5C" FromRole="DepartmentPositions" ToRole="Employees" />
+          <NavigationProperty Name="Tasks" Relationship="Self.TasksDepartmentPositionLink" FromRole="DepartmentPositions" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -492,7 +495,22 @@
           <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="DepartmentPositions" Relationship="Self.FK__Departmen__Depar__145C0A3F" FromRole="Departments" ToRole="DepartmentPositions" />
-          <NavigationProperty Name="Tasks" Relationship="finalDBModel.TasksDepartmentLink" FromRole="Department" ToRole="Task" />
+          <NavigationProperty Name="Tasks" Relationship="Self.TasksDepartmentLink" FromRole="Departments" ToRole="Tasks" />
+        </EntityType>
+        <EntityType Name="EmployeeInfo">
+          <Key>
+            <PropertyRef Name="EInfoID" />
+          </Key>
+          <Property Name="EInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="EEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ECity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="EPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__EmployeeI__Emplo__25869641" FromRole="EmployeeInfo" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -500,16 +518,16 @@
           </Key>
           <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="FName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOfHire" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PositionID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DepartmentPosition" Relationship="Self.FK__Employees__Posit__239E4DCF" FromRole="Employees" ToRole="DepartmentPositions" />
+          <NavigationProperty Name="DepartmentPosition" Relationship="Self.FK__Employees__Posit__1920BF5C" FromRole="Employees" ToRole="DepartmentPositions" />
+          <NavigationProperty Name="EmployeeInfoes" Relationship="Self.FK__EmployeeI__Emplo__25869641" FromRole="Employees" ToRole="EmployeeInfo" />
+          <NavigationProperty Name="Wages" Relationship="Self.FK__Wages__EmployeeI__1CF15040" FromRole="Employees" ToRole="Wages" />
           <NavigationProperty Name="ProjectPositions" Relationship="Self.EmployeeProjects" FromRole="Employees" ToRole="ProjectPositions" />
-          <NavigationProperty Name="Tasks" Relationship="finalDBModel.TasksEmployeeLink" FromRole="Employee" ToRole="Task" />
-          <NavigationProperty Name="EmployeeInfoes" Relationship="finalDBModel.FK__EmployeeI__Emplo__24927208" FromRole="Employee" ToRole="EmployeeInfo" />
-          <NavigationProperty Name="Wages" Relationship="finalDBModel.FK__Wages__EmployeeI__1CF15040" FromRole="Employee" ToRole="Wage" />
+          <NavigationProperty Name="Tasks" Relationship="Self.TasksEmployeeLink" FromRole="Employees" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="ProjectPosition">
           <Key>
@@ -519,9 +537,9 @@
           <Property Name="ProjectID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descr" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Project" Relationship="Self.FK__ProjectPo__Proje__2A4B4B5E" FromRole="ProjectPositions" ToRole="Projects" />
+          <NavigationProperty Name="Project" Relationship="Self.FK__ProjectPo__Proje__2D27B809" FromRole="ProjectPositions" ToRole="Projects" />
           <NavigationProperty Name="Employees" Relationship="Self.EmployeeProjects" FromRole="ProjectPositions" ToRole="Employees" />
-          <NavigationProperty Name="Tasks" Relationship="finalDBModel.TasksProjectPositionLink" FromRole="ProjectPosition" ToRole="Task" />
+          <NavigationProperty Name="Tasks" Relationship="Self.TasksProjectPositionLink" FromRole="ProjectPositions" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -530,8 +548,42 @@
           <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descr" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ProjectPositions" Relationship="Self.FK__ProjectPo__Proje__2A4B4B5E" FromRole="Projects" ToRole="ProjectPositions" />
-          <NavigationProperty Name="Tasks" Relationship="finalDBModel.TasksProjectLink" FromRole="Project" ToRole="Task" />
+          <NavigationProperty Name="ProjectPositions" Relationship="Self.FK__ProjectPo__Proje__2D27B809" FromRole="Projects" ToRole="ProjectPositions" />
+          <NavigationProperty Name="Tasks" Relationship="Self.TasksProjectLink" FromRole="Projects" ToRole="Tasks" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descr" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="CompletionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsMilestone" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.TasksDepartmentLink" FromRole="Tasks" ToRole="Departments" />
+          <NavigationProperty Name="DepartmentPositions" Relationship="Self.TasksDepartmentPositionLink" FromRole="Tasks" ToRole="DepartmentPositions" />
+          <NavigationProperty Name="Employees" Relationship="Self.TasksEmployeeLink" FromRole="Tasks" ToRole="Employees" />
+          <NavigationProperty Name="Projects" Relationship="Self.TasksProjectLink" FromRole="Tasks" ToRole="Projects" />
+          <NavigationProperty Name="ProjectPositions" Relationship="Self.TasksProjectPositionLink" FromRole="Tasks" ToRole="ProjectPositions" />
+        </EntityType>
+        <EntityType Name="Wage">
+          <Key>
+            <PropertyRef Name="WageID" />
+          </Key>
+          <Property Name="WageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="isHourly" Type="Boolean" Nullable="false" />
+          <Property Name="Wage1" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="isSalary" Type="Boolean" Nullable="false" />
+          <Property Name="Salary" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="isComm" Type="Boolean" Nullable="false" />
+          <Property Name="CommPerc" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="CommBase" Type="Int32" />
+          <Property Name="isBonus" Type="Boolean" Nullable="false" />
+          <Property Name="Bonus" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Wages__EmployeeI__1CF15040" FromRole="Wages" ToRole="Employees" />
         </EntityType>
         <Association Name="FK__Departmen__Depar__145C0A3F">
           <End Role="Departments" Type="Self.Department" Multiplicity="1">
@@ -547,7 +599,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__Posit__239E4DCF">
+        <Association Name="FK__Employees__Posit__1920BF5C">
           <End Role="DepartmentPositions" Type="Self.DepartmentPosition" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -559,7 +611,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProjectPo__Proje__2A4B4B5E">
+        <Association Name="FK__EmployeeI__Emplo__25869641">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wages__EmployeeI__1CF15040">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Wages" Type="Self.Wage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Wages">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectPo__Proje__2D27B809">
           <End Role="Projects" Type="Self.Project" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -577,27 +657,78 @@
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <End Role="ProjectPositions" Type="Self.ProjectPosition" Multiplicity="*" />
         </Association>
+        <Association Name="TasksDepartmentLink">
+          <End Role="Departments" Type="Self.Department" Multiplicity="*" />
+          <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+        </Association>
+        <Association Name="TasksDepartmentPositionLink">
+          <End Role="DepartmentPositions" Type="Self.DepartmentPosition" Multiplicity="*" />
+          <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+        </Association>
+        <Association Name="TasksEmployeeLink">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+          <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+        </Association>
+        <Association Name="TasksProjectLink">
+          <End Role="Projects" Type="Self.Project" Multiplicity="*" />
+          <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+        </Association>
+        <Association Name="TasksProjectPositionLink">
+          <End Role="ProjectPositions" Type="Self.ProjectPosition" Multiplicity="*" />
+          <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="finalDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DepartmentPositions" EntityType="Self.DepartmentPosition" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="EmployeeInfoes" EntityType="Self.EmployeeInfo" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="ProjectPositions" EntityType="Self.ProjectPosition" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <EntitySet Name="Wages" EntityType="Self.Wage" />
           <AssociationSet Name="FK__Departmen__Depar__145C0A3F" Association="Self.FK__Departmen__Depar__145C0A3F">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="DepartmentPositions" EntitySet="DepartmentPositions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__Posit__239E4DCF" Association="Self.FK__Employees__Posit__239E4DCF">
+          <AssociationSet Name="FK__Employees__Posit__1920BF5C" Association="Self.FK__Employees__Posit__1920BF5C">
             <End Role="DepartmentPositions" EntitySet="DepartmentPositions" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProjectPo__Proje__2A4B4B5E" Association="Self.FK__ProjectPo__Proje__2A4B4B5E">
+          <AssociationSet Name="FK__EmployeeI__Emplo__25869641" Association="Self.FK__EmployeeI__Emplo__25869641">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wages__EmployeeI__1CF15040" Association="Self.FK__Wages__EmployeeI__1CF15040">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Wages" EntitySet="Wages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectPo__Proje__2D27B809" Association="Self.FK__ProjectPo__Proje__2D27B809">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="ProjectPositions" EntitySet="ProjectPositions" />
           </AssociationSet>
           <AssociationSet Name="EmployeeProjects" Association="Self.EmployeeProjects">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="ProjectPositions" EntitySet="ProjectPositions" />
+          </AssociationSet>
+          <AssociationSet Name="TasksDepartmentLink" Association="Self.TasksDepartmentLink">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="TasksDepartmentPositionLink" Association="Self.TasksDepartmentPositionLink">
+            <End Role="DepartmentPositions" EntitySet="DepartmentPositions" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="TasksEmployeeLink" Association="Self.TasksEmployeeLink">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="TasksProjectLink" Association="Self.TasksProjectLink">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="TasksProjectPositionLink" Association="Self.TasksProjectPositionLink">
+            <End Role="ProjectPositions" EntitySet="ProjectPositions" />
+            <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
           <FunctionImport Name="InsertEmployee">
             <Parameter Name="UserName" Mode="In" Type="String" />
@@ -610,133 +741,7 @@
             <Parameter Name="EContract" Mode="In" Type="Boolean" />
             <Parameter Name="id" Mode="InOut" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Tasks" EntityType="finalDBModel.Task" />
-          <AssociationSet Name="TasksDepartmentLink" Association="finalDBModel.TasksDepartmentLink">
-            <End Role="Department" EntitySet="Departments" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="TasksEmployeeLink" Association="finalDBModel.TasksEmployeeLink">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="TasksProjectLink" Association="finalDBModel.TasksProjectLink">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="TasksDepartmentPositionLink" Association="finalDBModel.TasksDepartmentPositionLink">
-            <End Role="DepartmentPosition" EntitySet="DepartmentPositions" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="TasksProjectPositionLink" Association="finalDBModel.TasksProjectPositionLink">
-            <End Role="ProjectPosition" EntitySet="ProjectPositions" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
-          <EntitySet Name="EmployeeInfoes" EntityType="finalDBModel.EmployeeInfo" />
-          <EntitySet Name="Wages" EntityType="finalDBModel.Wage" />
-          <AssociationSet Name="FK__EmployeeI__Emplo__24927208" Association="finalDBModel.FK__EmployeeI__Emplo__24927208">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="EmployeeInfo" EntitySet="EmployeeInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wages__EmployeeI__1CF15040" Association="finalDBModel.FK__Wages__EmployeeI__1CF15040">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Wage" EntitySet="Wages" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Task">
-          <Key>
-            <PropertyRef Name="TaskID" />
-          </Key>
-          <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Descr" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CompletionDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Departments" Relationship="finalDBModel.TasksDepartmentLink" FromRole="Task" ToRole="Department" />
-          <NavigationProperty Name="Employees" Relationship="finalDBModel.TasksEmployeeLink" FromRole="Task" ToRole="Employee" />
-          <NavigationProperty Name="Projects" Relationship="finalDBModel.TasksProjectLink" FromRole="Task" ToRole="Project" />
-          <NavigationProperty Name="DepartmentPositions" Relationship="finalDBModel.TasksDepartmentPositionLink" FromRole="Task" ToRole="DepartmentPosition" />
-          <NavigationProperty Name="ProjectPositions" Relationship="finalDBModel.TasksProjectPositionLink" FromRole="Task" ToRole="ProjectPosition" />
-          <Property Name="IsMilestone" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <Association Name="TasksDepartmentLink">
-          <End Type="finalDBModel.Department" Role="Department" Multiplicity="*" />
-          <End Type="finalDBModel.Task" Role="Task" Multiplicity="*" />
-        </Association>
-        <Association Name="TasksEmployeeLink">
-          <End Type="finalDBModel.Employee" Role="Employee" Multiplicity="*" />
-          <End Type="finalDBModel.Task" Role="Task" Multiplicity="*" />
-        </Association>
-        <Association Name="TasksProjectLink">
-          <End Type="finalDBModel.Project" Role="Project" Multiplicity="*" />
-          <End Type="finalDBModel.Task" Role="Task" Multiplicity="*" />
-        </Association>
-        <Association Name="TasksDepartmentPositionLink">
-          <End Type="finalDBModel.DepartmentPosition" Role="DepartmentPosition" Multiplicity="*" />
-          <End Type="finalDBModel.Task" Role="Task" Multiplicity="*" />
-        </Association>
-        <Association Name="TasksProjectPositionLink">
-          <End Type="finalDBModel.ProjectPosition" Role="ProjectPosition" Multiplicity="*" />
-          <End Type="finalDBModel.Task" Role="Task" Multiplicity="*" />
-        </Association>
-        <EntityType Name="EmployeeInfo">
-          <Key>
-            <PropertyRef Name="EInfoID" />
-          </Key>
-          <Property Name="EInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="DOB" Type="DateTime" Precision="0" />
-          <Property Name="EEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="EAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="EState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="EPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee" Relationship="finalDBModel.FK__EmployeeI__Emplo__24927208" FromRole="EmployeeInfo" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Wage">
-          <Key>
-            <PropertyRef Name="WageID" />
-          </Key>
-          <Property Name="WageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="isHourly" Type="Boolean" Nullable="false" />
-          <Property Name="Wage1" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
-          <Property Name="isSalary" Type="Boolean" Nullable="false" />
-          <Property Name="Salary" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="isComm" Type="Boolean" Nullable="false" />
-          <Property Name="CommPerc" Type="Decimal" Precision="3" Scale="2" />
-          <Property Name="CommBase" Type="Int32" />
-          <Property Name="isBonus" Type="Boolean" Nullable="false" />
-          <Property Name="Bonus" Type="Int32" />
-          <NavigationProperty Name="Employee" Relationship="finalDBModel.FK__Wages__EmployeeI__1CF15040" FromRole="Wage" ToRole="Employee" />
-        </EntityType>
-        <Association Name="FK__EmployeeI__Emplo__24927208">
-          <End Type="finalDBModel.Employee" Role="Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="finalDBModel.EmployeeInfo" Role="EmployeeInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="EmployeeInfo">
-              <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wages__EmployeeI__1CF15040">
-          <End Type="finalDBModel.Employee" Role="Employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="finalDBModel.Wage" Role="Wage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
-              <PropertyRef Name="EmployeeID" />
-            </Principal>
-            <Dependent Role="Wage">
-              <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -761,14 +766,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeInfoes">
+            <EntityTypeMapping TypeName="finalDBModel.EmployeeInfo">
+              <MappingFragment StoreEntitySet="EmployeeInfo">
+                <ScalarProperty Name="EInfoID" ColumnName="EInfoID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="EEmail" ColumnName="EEmail" />
+                <ScalarProperty Name="EAddress" ColumnName="EAddress" />
+                <ScalarProperty Name="ECity" ColumnName="ECity" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="EState" ColumnName="EState" />
+                <ScalarProperty Name="EPhone" ColumnName="EPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="finalDBModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="LName" ColumnName="LName" />
-                <ScalarProperty Name="MI" ColumnName="MI" />
                 <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="MI" ColumnName="MI" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
                 <ScalarProperty Name="DateOfHire" ColumnName="DateOfHire" />
                 <ScalarProperty Name="PositionID" ColumnName="PositionID" />
               </MappingFragment>
@@ -793,6 +813,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="finalDBModel.Task">
+              <MappingFragment StoreEntitySet="Tasks">
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Descr" ColumnName="Descr" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="IsMilestone" ColumnName="IsMilestone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wages">
+            <EntityTypeMapping TypeName="finalDBModel.Wage">
+              <MappingFragment StoreEntitySet="Wages">
+                <ScalarProperty Name="WageID" ColumnName="WageID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="isHourly" ColumnName="isHourly" />
+                <ScalarProperty Name="Wage1" ColumnName="Wage" />
+                <ScalarProperty Name="isSalary" ColumnName="isSalary" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="isComm" ColumnName="isComm" />
+                <ScalarProperty Name="CommPerc" ColumnName="CommPerc" />
+                <ScalarProperty Name="CommBase" ColumnName="CommBase" />
+                <ScalarProperty Name="isBonus" ColumnName="isBonus" />
+                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="EmployeeProjects" TypeName="finalDBModel.EmployeeProjects" StoreEntitySet="EmployeeProjects">
             <EndProperty Name="Employees">
               <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
@@ -801,90 +851,47 @@
               <ScalarProperty Name="ProjPositionID" ColumnName="ProjPositionID" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="InsertEmployee" FunctionName="finalDBModel.Store.InsertEmployee" />
-          <EntitySetMapping Name="Tasks">
-            <EntityTypeMapping TypeName="finalDBModel.Task">
-              <MappingFragment StoreEntitySet="Tasks">
-                <ScalarProperty Name="IsMilestone" ColumnName="IsMilestone" />
-                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="Descr" ColumnName="Descr" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="TasksDepartmentLink" TypeName="finalDBModel.TasksDepartmentLink" StoreEntitySet="TasksDepartmentLink">
-            <EndProperty Name="Task">
-              <ScalarProperty Name="TaskID" ColumnName="TaskID" />
-            </EndProperty>
-            <EndProperty Name="Department">
+            <EndProperty Name="Departments">
               <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
             </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="TasksEmployeeLink" TypeName="finalDBModel.TasksEmployeeLink" StoreEntitySet="TasksEmployeeLink">
-            <EndProperty Name="Task">
+            <EndProperty Name="Tasks">
               <ScalarProperty Name="TaskID" ColumnName="TaskID" />
-            </EndProperty>
-            <EndProperty Name="Employee">
-              <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="TasksProjectLink" TypeName="finalDBModel.TasksProjectLink" StoreEntitySet="TasksProjectLink">
-            <EndProperty Name="Task">
-              <ScalarProperty Name="TaskID" ColumnName="TaskID" />
-            </EndProperty>
-            <EndProperty Name="Project">
-              <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="TasksDepartmentPositionLink" TypeName="finalDBModel.TasksDepartmentPositionLink" StoreEntitySet="TasksDepartmentPositionLink">
-            <EndProperty Name="Task">
+            <EndProperty Name="DepartmentPositions">
+              <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+            </EndProperty>
+            <EndProperty Name="Tasks">
               <ScalarProperty Name="TaskID" ColumnName="TaskID" />
             </EndProperty>
-            <EndProperty Name="DepartmentPosition">
-              <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TasksEmployeeLink" TypeName="finalDBModel.TasksEmployeeLink" StoreEntitySet="TasksEmployeeLink">
+            <EndProperty Name="Employees">
+              <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+            </EndProperty>
+            <EndProperty Name="Tasks">
+              <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="TasksProjectLink" TypeName="finalDBModel.TasksProjectLink" StoreEntitySet="TasksProjectLink">
+            <EndProperty Name="Projects">
+              <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+            </EndProperty>
+            <EndProperty Name="Tasks">
+              <ScalarProperty Name="TaskID" ColumnName="TaskID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="TasksProjectPositionLink" TypeName="finalDBModel.TasksProjectPositionLink" StoreEntitySet="TasksProjectPositionLink">
-            <EndProperty Name="Task">
-              <ScalarProperty Name="TaskID" ColumnName="TaskID" />
-            </EndProperty>
-            <EndProperty Name="ProjectPosition">
+            <EndProperty Name="ProjectPositions">
               <ScalarProperty Name="ProjPositionID" ColumnName="ProjPositionID" />
             </EndProperty>
+            <EndProperty Name="Tasks">
+              <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+            </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="EmployeeInfoes">
-            <EntityTypeMapping TypeName="finalDBModel.EmployeeInfo">
-              <MappingFragment StoreEntitySet="EmployeeInfo">
-                <ScalarProperty Name="EPhone" ColumnName="EPhone" />
-                <ScalarProperty Name="EState" ColumnName="EState" />
-                <ScalarProperty Name="Zip" ColumnName="Zip" />
-                <ScalarProperty Name="EAddress" ColumnName="EAddress" />
-                <ScalarProperty Name="EEmail" ColumnName="EEmail" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="EInfoID" ColumnName="EInfoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Wages">
-            <EntityTypeMapping TypeName="finalDBModel.Wage">
-              <MappingFragment StoreEntitySet="Wages">
-                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
-                <ScalarProperty Name="isBonus" ColumnName="isBonus" />
-                <ScalarProperty Name="CommBase" ColumnName="CommBase" />
-                <ScalarProperty Name="CommPerc" ColumnName="CommPerc" />
-                <ScalarProperty Name="isComm" ColumnName="isComm" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
-                <ScalarProperty Name="isSalary" ColumnName="isSalary" />
-                <ScalarProperty Name="Wage1" ColumnName="Wage" />
-                <ScalarProperty Name="isHourly" ColumnName="isHourly" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="WageID" ColumnName="WageID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertEmployee" FunctionName="finalDBModel.Store.InsertEmployee" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

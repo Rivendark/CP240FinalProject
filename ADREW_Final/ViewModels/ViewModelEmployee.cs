@@ -87,9 +87,9 @@ namespace ADREW_Final.ViewModels
                 }
                 
             }
-            catch
+            catch(SyntaxErrorException e)
             {
-                _Handle.InfoBox.Content = "An Error has Occured while loading Employees";
+                _Handle.InfoBox.Content = "An Error has Occured while loading Employees. Message:" + e.Message;
                 return false;
             }
             _Handle.InfoBox.Content = "Employee Loading: Successiful";

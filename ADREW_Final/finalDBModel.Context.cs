@@ -29,11 +29,11 @@ namespace ADREW_Final
     
         public virtual DbSet<DepartmentPosition> DepartmentPositions { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<EmployeeInfo> EmployeeInfoes { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<ProjectPosition> ProjectPositions { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
-        public virtual DbSet<EmployeeInfo> EmployeeInfoes { get; set; }
         public virtual DbSet<Wage> Wages { get; set; }
     
         public virtual int InsertEmployee(string userName, string lName, string mI, string fName, Nullable<System.DateTime> dateOfHire, Nullable<int> departmentID, Nullable<int> positionID, Nullable<bool> eContract, ObjectParameter id)

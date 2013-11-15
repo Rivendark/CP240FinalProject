@@ -62,7 +62,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
-                    <Border BorderBrush="{DynamicResource PrimaryBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{DynamicResource PrimaryBackgroundBrush}" SnapsToDevicePixels="True">
+                    <Border BorderBrush="{DynamicResource PrimaryBorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" SnapsToDevicePixels="True">
                         <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                 </ControlTemplate>
@@ -99,6 +99,9 @@
         <Setter Property="Background" Value="{StaticResource PrimaryBackgroundBrush}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
@@ -305,7 +308,7 @@
     </Style>
 
     <Style x:Key="DataGridRowStyle" TargetType="{x:Type DataGridRow}">
-        <Setter Property="Background" Value="{StaticResource PrimaryBackgroundBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="ValidationErrorTemplate">

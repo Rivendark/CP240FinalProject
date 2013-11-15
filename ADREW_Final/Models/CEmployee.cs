@@ -162,6 +162,8 @@ namespace ADREW_Final.Models
             _LName = E.LName;
             _MI = E.MI;
             _DOH = E.DateOfHire;
+            EmployeeInfo EI = E.EmployeeInfoes.FirstOrDefault() as EmployeeInfo;
+            _EmpInfo = new CEInfo(EI);
         }
         #endregion
 

@@ -17,9 +17,9 @@ namespace ADREW_Final
         public Task()
         {
             this.Departments = new HashSet<Department>();
+            this.DepartmentPositions = new HashSet<DepartmentPosition>();
             this.Employees = new HashSet<Employee>();
             this.Projects = new HashSet<Project>();
-            this.DepartmentPositions = new HashSet<DepartmentPosition>();
             this.ProjectPositions = new HashSet<ProjectPosition>();
         }
     
@@ -27,13 +27,14 @@ namespace ADREW_Final
         public string Name { get; set; }
         public string Descr { get; set; }
         public System.DateTime StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
         public System.DateTime CompletionDate { get; set; }
         public bool IsMilestone { get; set; }
     
         public virtual ICollection<Department> Departments { get; set; }
+        public virtual ICollection<DepartmentPosition> DepartmentPositions { get; set; }
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual ICollection<Project> Projects { get; set; }
-        public virtual ICollection<DepartmentPosition> DepartmentPositions { get; set; }
         public virtual ICollection<ProjectPosition> ProjectPositions { get; set; }
     }
 }

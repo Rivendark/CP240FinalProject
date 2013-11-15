@@ -19,6 +19,7 @@ namespace ADREW_Final
         public Nullable<System.DateTime> DOB { get; set; }
         public string EEmail { get; set; }
         public string EAddress { get; set; }
+        public string ECity { get; set; }
         public string Zip { get; set; }
         public string EState { get; set; }
         public string EPhone { get; set; }

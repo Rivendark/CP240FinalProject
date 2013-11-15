@@ -16,24 +16,24 @@ namespace ADREW_Final
     {
         public Employee()
         {
-            this.ProjectPositions = new HashSet<ProjectPosition>();
-            this.Tasks = new HashSet<Task>();
             this.EmployeeInfoes = new HashSet<EmployeeInfo>();
             this.Wages = new HashSet<Wage>();
+            this.ProjectPositions = new HashSet<ProjectPosition>();
+            this.Tasks = new HashSet<Task>();
         }
     
         public int EmployeeID { get; set; }
         public string UserName { get; set; }
-        public string LName { get; set; }
-        public string MI { get; set; }
         public string FName { get; set; }
+        public string MI { get; set; }
+        public string LName { get; set; }
         public System.DateTime DateOfHire { get; set; }
         public int PositionID { get; set; }
     
         public virtual DepartmentPosition DepartmentPosition { get; set; }
-        public virtual ICollection<ProjectPosition> ProjectPositions { get; set; }
-        public virtual ICollection<Task> Tasks { get; set; }
         public virtual ICollection<EmployeeInfo> EmployeeInfoes { get; set; }
         public virtual ICollection<Wage> Wages { get; set; }
+        public virtual ICollection<ProjectPosition> ProjectPositions { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
     }
 }
