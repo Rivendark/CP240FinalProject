@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADREW_Final", "ADREW_Final\ADREW_Final.csproj", "{D1D04168-DB86-457E-84D4-40FEC2574FE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\..\..\..\Tools\ADrew - DALs\DAL\DAL.csproj", "{F72EEC8B-8C67-44FC-8514-EE440D09C8D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1D04168-DB86-457E-84D4-40FEC2574FE2}.Debug|x86.ActiveCfg = Debug|x86
+		{D1D04168-DB86-457E-84D4-40FEC2574FE2}.Debug|x86.Build.0 = Debug|x86
+		{D1D04168-DB86-457E-84D4-40FEC2574FE2}.Release|x86.ActiveCfg = Release|x86
+		{D1D04168-DB86-457E-84D4-40FEC2574FE2}.Release|x86.Build.0 = Release|x86
+		{F72EEC8B-8C67-44FC-8514-EE440D09C8D1}.Debug|x86.ActiveCfg = Debug|x86
+		{F72EEC8B-8C67-44FC-8514-EE440D09C8D1}.Debug|x86.Build.0 = Debug|x86
+		{F72EEC8B-8C67-44FC-8514-EE440D09C8D1}.Release|x86.ActiveCfg = Release|x86
+		{F72EEC8B-8C67-44FC-8514-EE440D09C8D1}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

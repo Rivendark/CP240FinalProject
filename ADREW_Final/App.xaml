@@ -1,0 +1,17 @@
+﻿<Application x:Class="ADREW_Final.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ADREW_Final;component/Resources/BasicStyles.xaml" />
+                <ResourceDictionary Source="/ADREW_Final;component/Resources/DataGridStyle.xaml" />
+                <ResourceDictionary Source="/ADREW_Final;component/Resources/MenuStyle.xaml" />
+                <ResourceDictionary Source="/ADREW_Final;component/Resources/ScrollBarStyle.xaml" />
+                <ResourceDictionary Source="/ADREW_Final;component/Resources/TabControlAndItem.xaml" />
+                <ResourceDictionary Source="/ADREW_Final;component/Resources/DataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

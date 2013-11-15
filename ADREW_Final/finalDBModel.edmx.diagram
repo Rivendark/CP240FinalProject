@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="260fc2746de24877916319e6078b7539" Name="Diagram1">
+        <EntityTypeShape EntityType="finalDBModel.DepartmentPosition" Width="1.5" PointX="7" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.Department" Width="1.5" PointX="4.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.Employee" Width="1.5" PointX="9.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.ProjectPosition" Width="1.5" PointX="6.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.Project" Width="1.5" PointX="4.375" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="finalDBModel.FK__Departmen__Depar__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="finalDBModel.FK__Employees__Posit__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="finalDBModel.FK__ProjectPo__Proje__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="finalDBModel.EmployeeProjects" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="finalDBModel.Task" Width="1.5" PointX="2.125" PointY="2.25" />
+        <AssociationConnector Association="finalDBModel.TasksDepartmentLink" />
+        <AssociationConnector Association="finalDBModel.TasksEmployeeLink" />
+        <AssociationConnector Association="finalDBModel.TasksProjectLink" />
+        <AssociationConnector Association="finalDBModel.TasksDepartmentPositionLink" />
+        <AssociationConnector Association="finalDBModel.TasksProjectPositionLink" />
+        <EntityTypeShape EntityType="finalDBModel.EmployeeInfo" Width="1.5" PointX="13.75" PointY="0.5" />
+        <EntityTypeShape EntityType="finalDBModel.Wage" Width="1.5" PointX="11.875" PointY="0.5" />
+        <AssociationConnector Association="finalDBModel.FK__EmployeeI__Emplo__24927208" />
+        <AssociationConnector Association="finalDBModel.FK__Wages__EmployeeI__1CF15040" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

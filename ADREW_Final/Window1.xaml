@@ -1,0 +1,107 @@
+﻿<Window x:Class="ADREW_Final.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="300" Width="809.278">
+    <Grid x:Name="EmpRowDetailsGrid" Background="{DynamicResource PrimaryBackgroundBrush}" Margin="20,0,0,0" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid DataContext="{Binding Path=EmpInfo}" Name="GridBasicEmployeeInfo" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Basic Information:" Grid.Column="1" Margin="1" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <Label Content="Age:" Margin="2" Grid.Row="1" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <Label Content="Email:" Margin="2" Grid.Row="2" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <Label Content="Address:" Margin="2" Grid.Row="3" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <Label Content="City:" Margin="2" Grid.Row="4" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <Label Content="State:" Margin="2" Grid.Row="5" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <Label Content="Phone:" Margin="2" Grid.Row="6" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <Label Content="{Binding Path=Age}" Name="LabelAge" Grid.Column="1" Padding="3" Grid.Row="1" Style="{StaticResource BaseLabelStyle}"/>
+            <Label Content="{Binding Path=Email}" Name="LabelEmail" Grid.Column="1" Padding="3" Grid.Row="2" Style="{StaticResource BaseLabelStyle}"/>
+            <Label Content="{Binding Path=Address}" Name="LabelAddress" Grid.Column="1" Padding="3" Grid.Row="3" Style="{StaticResource BaseLabelStyle}"/>
+            <Label Content="{Binding Path=City}" Name="LabelCity" Grid.Column="1" Padding="3" Grid.Row="4" Style="{StaticResource BaseLabelStyle}"/>
+            <Label Content="{Binding Path=State}" Name="LabelState" Grid.Column="1" Padding="3" Grid.Row="5" Style="{StaticResource BaseLabelStyle}"/>
+            <Label Content="{Binding Path=Phone}" Name="LabelPhone" Grid.Column="1" Padding="3" Grid.Row="6" Style="{StaticResource BaseLabelStyle}"/>
+        </Grid>
+        <Grid Grid.ColumnSpan="1" Grid.Column="1" Name="GridEmployeeWages">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="20*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Wages:" Style="{DynamicResource OutputLabelStyle}" Margin="1"/>
+            <Grid  Grid.Row="1" Grid.RowSpan="1" Margin="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox Content="Hourly" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" IsManipulationEnabled="False" Margin="5,0,0,0"/>
+                <CheckBox Content="Salary" Grid.Column="1" HorizontalAlignment="Left"  VerticalAlignment="Center" Foreground="White" IsManipulationEnabled="False" Margin="5,0,0,0"/>
+                <CheckBox Content="Commission" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Foreground="White" IsManipulationEnabled="False" Margin="5,0,0,0"/>
+                <CheckBox Content="Bonus" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Foreground="White" IsManipulationEnabled="False" Margin="5,0,0,0"/>
+                <Border BorderBrush="Black" BorderThickness="0,1,0,1" Grid.ColumnSpan="2" Grid.RowSpan="1" Grid.Row="1"/>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,0" Grid.ColumnSpan="1" Grid.RowSpan="2"/>
+            </Grid>
+            <Grid Grid.Row="2" DataContext="{Binding Path=EmpWages}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Wage:" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+                <Label Content="Salary:" Grid.Row="1" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+                <Label Content="Commission:" Grid.Row="2" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+                <Label Content="Bonus:" Grid.Row="3" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+                <Label Content="{Binding Path=Age}" Name="LabelWage" Grid.Column="1" Padding="3" Grid.Row="0" Style="{StaticResource BaseLabelStyle}"/>
+                <Label Content="{Binding Path=Email}" Name="LabelSalary" Grid.Column="1" Padding="3" Grid.Row="1" Style="{StaticResource BaseLabelStyle}"/>
+                <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Label Content="{Binding Path=CommPercent}" Name="LabelCommissionPercent" Grid.Column="1" Padding="3" Grid.Row="0" Style="{StaticResource BaseLabelStyle}"/>
+                        <Label Content="%"  Grid.Column="1" Padding="3" Grid.Row="0" Style="{StaticResource BaseLabelStyle}"/>
+                    </StackPanel>
+                    <Label Content="{Binding Path=Address}" Name="LabelCommission" Grid.Column="1" Padding="3" Grid.Row="2" Style="{StaticResource BaseLabelStyle}"/>
+                </StackPanel>
+                <Label Content="{Binding Path=City}" Name="LabelBonus" Grid.Column="1" Padding="3" Grid.Row="3" Style="{StaticResource BaseLabelStyle}"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="70*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Projects:" Margin="1" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <ListBox Name="DetailsProjectListBox" Grid.Row="1" Background="{DynamicResource PrimaryBackgroundBrush}" BorderBrush="{DynamicResource PrimaryBorderBrush}" Margin="1" ScrollViewer.CanContentScroll="False"/>
+        </Grid>
+        <Grid Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="70*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Tasks:" Margin="1" Padding="3" Style="{DynamicResource OutputLabelStyle}"/>
+            <ListBox Name="DetailsTasksListBox" Grid.Row="1" Background="{DynamicResource PrimaryBackgroundBrush}" BorderBrush="{DynamicResource PrimaryBorderBrush}" Margin="1"/>
+        </Grid>
+    </Grid>
+</Window>

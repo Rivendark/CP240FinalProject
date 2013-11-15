@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="CellEmpNameTemplate">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Path=FName}" />
+            <TextBlock Text=" " />
+            <TextBlock Text="{Binding Path=MI}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="CellEditingEmpNameTemplate">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Path=FName}" />
+            <TextBlock Text=" " />
+            <TextBlock Text="{Binding Path=MI}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="CellEmpDeptTemplate">
+        <StackPanel Orientation="Horizontal" DataContext="{Binding Path=Dept}">
+            <TextBlock Text="{Binding Path=Name}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="CellEditingEmpDeptTemplate">
+        <StackPanel Orientation="Horizontal" DataContext="{Binding Path=Dept}">
+            <TextBlock Text="{Binding Path=Name}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="CellEmpPosTemplate">
+        <StackPanel Orientation="Horizontal" DataContext="{Binding Path=Position}">
+            <TextBlock Text="{Binding Path=Name}" />
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="CellEditingEmpPosTemplate">
+        <StackPanel Orientation="Horizontal" DataContext="{Binding Path=Position}">
+            <TextBlock Text="{Binding Path=Name}" />
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>
