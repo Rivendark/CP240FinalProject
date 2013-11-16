@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ADREW_Final.Models
 {
-    class ModelBase : INotifyPropertyChanged, IChangeTracking, IRevertibleChangeTracking
+    class ModelBase : INotifyPropertyChanged, IChangeTracking, IRevertibleChangeTracking, IDataErrorInfo
     {
         //Events
         public event PropertyChangedEventHandler PropertyChanged;
@@ -80,6 +80,42 @@ namespace ADREW_Final.Models
         {
             throw new NotImplementedException();
         }
+        #endregion
+
+        #region IDataErrorInfo
+        private Dictionary<String, List<String>> Errors = new Dictionary<string, List<string>>();
+
+        protected void AddError(string propertyName, string Error, bool isWarning)
+        {
+            if (!Errors.ContainsKey(propertyName))
+                Errors[propertyName] = new List<string>();
+            if (!Errors[propertyName].Contains(Error))
+            {
+                if (isWarning) Errors[propertyName].Add(Error);
+                else Errors[propertyName].Insert(0, Error);
+            }
+        }
+
+        protected void RemoveError(string propertyName, string Error)
+        {
+            if (Errors.ContainsKey(propertyName) && Errors[propertyName].Contains(Error))
+            {
+                Errors[propertyName].Remove(Error);
+                if (Errors[propertyName].Count == 0) Errors.Remove(propertyName);
+            }
+        }
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string propertyName]
+        {
+            get {
+                return (!Errors.ContainsKey(propertyName) ? null : String.Join(Environment.NewLine, Errors[propertyName]));
+            }
+        }
+
         #endregion
     }
 }

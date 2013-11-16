@@ -7,12 +7,6 @@ GO
 CREATE DATABASE finalDB
 GO
 
-GO
-CREATE USER [Azrael] FOR LOGIN [AZRAEL-PC\Azrael] WITH DEFAULT_SCHEMA=[dbo]
-GO
-ALTER ROLE [db_owner] ADD MEMBER [Azrael]
-GO
-
 USE finalDB
 
 CREATE TABLE Departments(

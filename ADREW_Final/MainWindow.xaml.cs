@@ -25,26 +25,27 @@ namespace ADREW_Final
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         ViewModelEmployee Employees;
         
         public MainWindow()
         {
             InitializeComponent();
+            Employees = new ViewModelEmployee(this);
+            EmpDataGrid.ItemsSource = Employees.EmpCol;
+            Employees.BindToClass();
 
+            ConnectedImage.Visibility = Visibility.Visible;
+            DisconnectedImage.Visibility = Visibility.Collapsed;
             
         }
 
+        #region MenuMethods
         private void MenuItemOpen_Click(object sender, RoutedEventArgs e)
         {
             if (SQLDAL.DCDConnect())
             {
-                LabelHost.Content = SQLDAL.HostName;
-                LabelDatabase.Content = SQLDAL.DBName;
-                Employees = new ViewModelEmployee(this);
-                EmpDataGrid.ItemsSource = Employees.EmpCol;
-                Employees.BindToClass();
-                ConnectedImage.Visibility = Visibility.Visible;
-                DisconnectedImage.Visibility = Visibility.Collapsed;
+                
             }
             else
             {
@@ -54,8 +55,12 @@ namespace ADREW_Final
 
         private void MenuItemNewEmp_Click(object sender, RoutedEventArgs e)
         {
-            //EmpMgmt EmpMgmtWindow = new EmpMgmt(this, true, _DeptList, new CEmployee(-1, DateTime.Now));
-            //EmpMgmtWindow.Show();
+            using (finalDBEntities _EmpContext = new finalDBEntities())
+            {
+                Project P = _EmpContext.Projects.FirstOrDefault(Projects => Projects.ProjectID == 1);
+                P.Name = "External: " + P.Name;
+                _EmpContext.SaveChanges();
+            }
         }
 
         private void MenuItemNewProj_Click(object sender, RoutedEventArgs e)
@@ -75,6 +80,7 @@ namespace ADREW_Final
         {
             Application.Current.Shutdown();
         }
+        #endregion
 
         private void EmpDataGrid_RowDetailsVisibilityChanged(object sender, DataGridRowDetailsEventArgs e)
         {

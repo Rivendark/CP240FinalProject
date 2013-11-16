@@ -26,6 +26,11 @@ namespace ADREW_Final.ViewModels
         public ViewModelEmployee(MainWindow Handle)
         {
             _Handle = Handle;
+            using(_EmpContext = new finalDBEntities()){
+                _Handle.LabelHost.Content = _EmpContext.Database.Connection.DataSource.ToString();
+                _Handle.LabelDatabase.Content = _EmpContext.Database.Connection.Database.ToString();
+            }
+           
         }
 
         public bool BindToClass(){

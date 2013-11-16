@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="finalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="finalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DepartmentPositions">
           <Key>
             <PropertyRef Name="PositionID" />
@@ -140,7 +140,7 @@
           <Property Name="isBonus" Type="bit" Nullable="false" />
           <Property Name="Bonus" Type="int" />
         </EntityType>
-        <Association Name="FK__Departmen__Depar__145C0A3F">
+        <Association Name="FK__Departmen__Depar__30F848ED">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -154,7 +154,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EmployeeI__Emplo__25869641">
+        <Association Name="FK__EmployeeI__Emplo__4222D4EF">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -168,7 +168,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EmployeeP__Emplo__300424B4">
+        <Association Name="FK__EmployeeP__Emplo__4CA06362">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -182,7 +182,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EmployeeP__ProjP__30F848ED">
+        <Association Name="FK__EmployeeP__ProjP__4D94879B">
           <End Role="ProjectPositions" Type="Self.ProjectPositions" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -196,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__Posit__1920BF5C">
+        <Association Name="FK__Employees__Posit__35BCFE0A">
           <End Role="DepartmentPositions" Type="Self.DepartmentPositions" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,7 +208,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProjectPo__Proje__2D27B809">
+        <Association Name="FK__ProjectPo__Proje__49C3F6B7">
           <End Role="Projects" Type="Self.Projects" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -222,7 +222,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksDepa__Depar__3B75D760">
+        <Association Name="FK__TasksDepa__Depar__5812160E">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -236,7 +236,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksDepa__Posit__46E78A0C">
+        <Association Name="FK__TasksDepa__Posit__6383C8BA">
           <End Role="DepartmentPositions" Type="Self.DepartmentPositions" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -250,7 +250,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksDepa__TaskI__3A81B327">
+        <Association Name="FK__TasksDepa__TaskI__571DF1D5">
           <End Role="Tasks" Type="Self.Tasks" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -264,7 +264,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksDepa__TaskI__45F365D3">
+        <Association Name="FK__TasksDepa__TaskI__628FA481">
           <End Role="Tasks" Type="Self.Tasks" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -278,7 +278,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksEmpl__Emplo__37A5467C">
+        <Association Name="FK__TasksEmpl__Emplo__5441852A">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -292,7 +292,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksEmpl__TaskI__36B12243">
+        <Association Name="FK__TasksEmpl__TaskI__534D60F1">
           <End Role="Tasks" Type="Self.Tasks" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -306,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksProj__Proje__3F466844">
+        <Association Name="FK__TasksProj__Proje__5BE2A6F2">
           <End Role="Projects" Type="Self.Projects" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -320,7 +320,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksProj__ProjP__4316F928">
+        <Association Name="FK__TasksProj__ProjP__5FB337D6">
           <End Role="ProjectPositions" Type="Self.ProjectPositions" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -334,7 +334,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksProj__TaskI__3E52440B">
+        <Association Name="FK__TasksProj__TaskI__5AEE82B9">
           <End Role="Tasks" Type="Self.Tasks" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -348,7 +348,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TasksProj__TaskI__4222D4EF">
+        <Association Name="FK__TasksProj__TaskI__5EBF139D">
           <End Role="Tasks" Type="Self.Tasks" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -362,7 +362,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wages__EmployeeI__1CF15040">
+        <Association Name="FK__Wages__EmployeeI__398D8EEE">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -402,71 +402,71 @@
           <EntitySet Name="TasksProjectLink" EntityType="Self.TasksProjectLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TasksProjectPositionLink" EntityType="Self.TasksProjectPositionLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wages" EntityType="Self.Wages" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Departmen__Depar__145C0A3F" Association="Self.FK__Departmen__Depar__145C0A3F">
+          <AssociationSet Name="FK__Departmen__Depar__30F848ED" Association="Self.FK__Departmen__Depar__30F848ED">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="DepartmentPositions" EntitySet="DepartmentPositions" />
           </AssociationSet>
-          <AssociationSet Name="FK__EmployeeI__Emplo__25869641" Association="Self.FK__EmployeeI__Emplo__25869641">
+          <AssociationSet Name="FK__EmployeeI__Emplo__4222D4EF" Association="Self.FK__EmployeeI__Emplo__4222D4EF">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK__EmployeeP__Emplo__300424B4" Association="Self.FK__EmployeeP__Emplo__300424B4">
+          <AssociationSet Name="FK__EmployeeP__Emplo__4CA06362" Association="Self.FK__EmployeeP__Emplo__4CA06362">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="EmployeeProjects" EntitySet="EmployeeProjects" />
           </AssociationSet>
-          <AssociationSet Name="FK__EmployeeP__ProjP__30F848ED" Association="Self.FK__EmployeeP__ProjP__30F848ED">
+          <AssociationSet Name="FK__EmployeeP__ProjP__4D94879B" Association="Self.FK__EmployeeP__ProjP__4D94879B">
             <End Role="ProjectPositions" EntitySet="ProjectPositions" />
             <End Role="EmployeeProjects" EntitySet="EmployeeProjects" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__Posit__1920BF5C" Association="Self.FK__Employees__Posit__1920BF5C">
+          <AssociationSet Name="FK__Employees__Posit__35BCFE0A" Association="Self.FK__Employees__Posit__35BCFE0A">
             <End Role="DepartmentPositions" EntitySet="DepartmentPositions" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProjectPo__Proje__2D27B809" Association="Self.FK__ProjectPo__Proje__2D27B809">
+          <AssociationSet Name="FK__ProjectPo__Proje__49C3F6B7" Association="Self.FK__ProjectPo__Proje__49C3F6B7">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="ProjectPositions" EntitySet="ProjectPositions" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksDepa__Depar__3B75D760" Association="Self.FK__TasksDepa__Depar__3B75D760">
+          <AssociationSet Name="FK__TasksDepa__Depar__5812160E" Association="Self.FK__TasksDepa__Depar__5812160E">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="TasksDepartmentLink" EntitySet="TasksDepartmentLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksDepa__Posit__46E78A0C" Association="Self.FK__TasksDepa__Posit__46E78A0C">
+          <AssociationSet Name="FK__TasksDepa__Posit__6383C8BA" Association="Self.FK__TasksDepa__Posit__6383C8BA">
             <End Role="DepartmentPositions" EntitySet="DepartmentPositions" />
             <End Role="TasksDepartmentPositionLink" EntitySet="TasksDepartmentPositionLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksDepa__TaskI__3A81B327" Association="Self.FK__TasksDepa__TaskI__3A81B327">
+          <AssociationSet Name="FK__TasksDepa__TaskI__571DF1D5" Association="Self.FK__TasksDepa__TaskI__571DF1D5">
             <End Role="Tasks" EntitySet="Tasks" />
             <End Role="TasksDepartmentLink" EntitySet="TasksDepartmentLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksDepa__TaskI__45F365D3" Association="Self.FK__TasksDepa__TaskI__45F365D3">
+          <AssociationSet Name="FK__TasksDepa__TaskI__628FA481" Association="Self.FK__TasksDepa__TaskI__628FA481">
             <End Role="Tasks" EntitySet="Tasks" />
             <End Role="TasksDepartmentPositionLink" EntitySet="TasksDepartmentPositionLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksEmpl__Emplo__37A5467C" Association="Self.FK__TasksEmpl__Emplo__37A5467C">
+          <AssociationSet Name="FK__TasksEmpl__Emplo__5441852A" Association="Self.FK__TasksEmpl__Emplo__5441852A">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="TasksEmployeeLink" EntitySet="TasksEmployeeLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksEmpl__TaskI__36B12243" Association="Self.FK__TasksEmpl__TaskI__36B12243">
+          <AssociationSet Name="FK__TasksEmpl__TaskI__534D60F1" Association="Self.FK__TasksEmpl__TaskI__534D60F1">
             <End Role="Tasks" EntitySet="Tasks" />
             <End Role="TasksEmployeeLink" EntitySet="TasksEmployeeLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksProj__Proje__3F466844" Association="Self.FK__TasksProj__Proje__3F466844">
+          <AssociationSet Name="FK__TasksProj__Proje__5BE2A6F2" Association="Self.FK__TasksProj__Proje__5BE2A6F2">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="TasksProjectLink" EntitySet="TasksProjectLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksProj__ProjP__4316F928" Association="Self.FK__TasksProj__ProjP__4316F928">
+          <AssociationSet Name="FK__TasksProj__ProjP__5FB337D6" Association="Self.FK__TasksProj__ProjP__5FB337D6">
             <End Role="ProjectPositions" EntitySet="ProjectPositions" />
             <End Role="TasksProjectPositionLink" EntitySet="TasksProjectPositionLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksProj__TaskI__3E52440B" Association="Self.FK__TasksProj__TaskI__3E52440B">
+          <AssociationSet Name="FK__TasksProj__TaskI__5AEE82B9" Association="Self.FK__TasksProj__TaskI__5AEE82B9">
             <End Role="Tasks" EntitySet="Tasks" />
             <End Role="TasksProjectLink" EntitySet="TasksProjectLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__TasksProj__TaskI__4222D4EF" Association="Self.FK__TasksProj__TaskI__4222D4EF">
+          <AssociationSet Name="FK__TasksProj__TaskI__5EBF139D" Association="Self.FK__TasksProj__TaskI__5EBF139D">
             <End Role="Tasks" EntitySet="Tasks" />
             <End Role="TasksProjectPositionLink" EntitySet="TasksProjectPositionLink" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wages__EmployeeI__1CF15040" Association="Self.FK__Wages__EmployeeI__1CF15040">
+          <AssociationSet Name="FK__Wages__EmployeeI__398D8EEE" Association="Self.FK__Wages__EmployeeI__398D8EEE">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Wages" EntitySet="Wages" />
           </AssociationSet>
@@ -484,8 +484,8 @@
           <Property Name="DepartmentID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Department" Relationship="Self.FK__Departmen__Depar__145C0A3F" FromRole="DepartmentPositions" ToRole="Departments" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Posit__1920BF5C" FromRole="DepartmentPositions" ToRole="Employees" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Departmen__Depar__30F848ED" FromRole="DepartmentPositions" ToRole="Departments" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Posit__35BCFE0A" FromRole="DepartmentPositions" ToRole="Employees" />
           <NavigationProperty Name="Tasks" Relationship="Self.TasksDepartmentPositionLink" FromRole="DepartmentPositions" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Department">
@@ -494,7 +494,7 @@
           </Key>
           <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="DepartmentPositions" Relationship="Self.FK__Departmen__Depar__145C0A3F" FromRole="Departments" ToRole="DepartmentPositions" />
+          <NavigationProperty Name="DepartmentPositions" Relationship="Self.FK__Departmen__Depar__30F848ED" FromRole="Departments" ToRole="DepartmentPositions" />
           <NavigationProperty Name="Tasks" Relationship="Self.TasksDepartmentLink" FromRole="Departments" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="EmployeeInfo">
@@ -510,7 +510,7 @@
           <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="EState" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="EPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__EmployeeI__Emplo__25869641" FromRole="EmployeeInfo" ToRole="Employees" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__EmployeeI__Emplo__4222D4EF" FromRole="EmployeeInfo" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -523,9 +523,9 @@
           <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOfHire" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PositionID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DepartmentPosition" Relationship="Self.FK__Employees__Posit__1920BF5C" FromRole="Employees" ToRole="DepartmentPositions" />
-          <NavigationProperty Name="EmployeeInfoes" Relationship="Self.FK__EmployeeI__Emplo__25869641" FromRole="Employees" ToRole="EmployeeInfo" />
-          <NavigationProperty Name="Wages" Relationship="Self.FK__Wages__EmployeeI__1CF15040" FromRole="Employees" ToRole="Wages" />
+          <NavigationProperty Name="DepartmentPosition" Relationship="Self.FK__Employees__Posit__35BCFE0A" FromRole="Employees" ToRole="DepartmentPositions" />
+          <NavigationProperty Name="EmployeeInfoes" Relationship="Self.FK__EmployeeI__Emplo__4222D4EF" FromRole="Employees" ToRole="EmployeeInfo" />
+          <NavigationProperty Name="Wages" Relationship="Self.FK__Wages__EmployeeI__398D8EEE" FromRole="Employees" ToRole="Wages" />
           <NavigationProperty Name="ProjectPositions" Relationship="Self.EmployeeProjects" FromRole="Employees" ToRole="ProjectPositions" />
           <NavigationProperty Name="Tasks" Relationship="Self.TasksEmployeeLink" FromRole="Employees" ToRole="Tasks" />
         </EntityType>
@@ -537,7 +537,7 @@
           <Property Name="ProjectID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descr" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Project" Relationship="Self.FK__ProjectPo__Proje__2D27B809" FromRole="ProjectPositions" ToRole="Projects" />
+          <NavigationProperty Name="Project" Relationship="Self.FK__ProjectPo__Proje__49C3F6B7" FromRole="ProjectPositions" ToRole="Projects" />
           <NavigationProperty Name="Employees" Relationship="Self.EmployeeProjects" FromRole="ProjectPositions" ToRole="Employees" />
           <NavigationProperty Name="Tasks" Relationship="Self.TasksProjectPositionLink" FromRole="ProjectPositions" ToRole="Tasks" />
         </EntityType>
@@ -548,7 +548,7 @@
           <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descr" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ProjectPositions" Relationship="Self.FK__ProjectPo__Proje__2D27B809" FromRole="Projects" ToRole="ProjectPositions" />
+          <NavigationProperty Name="ProjectPositions" Relationship="Self.FK__ProjectPo__Proje__49C3F6B7" FromRole="Projects" ToRole="ProjectPositions" />
           <NavigationProperty Name="Tasks" Relationship="Self.TasksProjectLink" FromRole="Projects" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Task">
@@ -583,9 +583,9 @@
           <Property Name="CommBase" Type="Int32" />
           <Property Name="isBonus" Type="Boolean" Nullable="false" />
           <Property Name="Bonus" Type="Int32" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Wages__EmployeeI__1CF15040" FromRole="Wages" ToRole="Employees" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Wages__EmployeeI__398D8EEE" FromRole="Wages" ToRole="Employees" />
         </EntityType>
-        <Association Name="FK__Departmen__Depar__145C0A3F">
+        <Association Name="FK__Departmen__Depar__30F848ED">
           <End Role="Departments" Type="Self.Department" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -599,7 +599,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__Posit__1920BF5C">
+        <Association Name="FK__Employees__Posit__35BCFE0A">
           <End Role="DepartmentPositions" Type="Self.DepartmentPosition" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -611,7 +611,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EmployeeI__Emplo__25869641">
+        <Association Name="FK__EmployeeI__Emplo__4222D4EF">
           <End Role="Employees" Type="Self.Employee" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -625,7 +625,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wages__EmployeeI__1CF15040">
+        <Association Name="FK__Wages__EmployeeI__398D8EEE">
           <End Role="Employees" Type="Self.Employee" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -639,7 +639,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProjectPo__Proje__2D27B809">
+        <Association Name="FK__ProjectPo__Proje__49C3F6B7">
           <End Role="Projects" Type="Self.Project" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -686,23 +686,23 @@
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
           <EntitySet Name="Wages" EntityType="Self.Wage" />
-          <AssociationSet Name="FK__Departmen__Depar__145C0A3F" Association="Self.FK__Departmen__Depar__145C0A3F">
+          <AssociationSet Name="FK__Departmen__Depar__30F848ED" Association="Self.FK__Departmen__Depar__30F848ED">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="DepartmentPositions" EntitySet="DepartmentPositions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__Posit__1920BF5C" Association="Self.FK__Employees__Posit__1920BF5C">
+          <AssociationSet Name="FK__Employees__Posit__35BCFE0A" Association="Self.FK__Employees__Posit__35BCFE0A">
             <End Role="DepartmentPositions" EntitySet="DepartmentPositions" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__EmployeeI__Emplo__25869641" Association="Self.FK__EmployeeI__Emplo__25869641">
+          <AssociationSet Name="FK__EmployeeI__Emplo__4222D4EF" Association="Self.FK__EmployeeI__Emplo__4222D4EF">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="EmployeeInfo" EntitySet="EmployeeInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wages__EmployeeI__1CF15040" Association="Self.FK__Wages__EmployeeI__1CF15040">
+          <AssociationSet Name="FK__Wages__EmployeeI__398D8EEE" Association="Self.FK__Wages__EmployeeI__398D8EEE">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Wages" EntitySet="Wages" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProjectPo__Proje__2D27B809" Association="Self.FK__ProjectPo__Proje__2D27B809">
+          <AssociationSet Name="FK__ProjectPo__Proje__49C3F6B7" Association="Self.FK__ProjectPo__Proje__49C3F6B7">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="ProjectPositions" EntitySet="ProjectPositions" />
           </AssociationSet>

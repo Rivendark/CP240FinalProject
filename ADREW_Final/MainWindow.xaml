@@ -12,6 +12,8 @@
                     </LinearGradientBrush>
                 </Menu.Background>
                 <MenuItem Header="_File">
+                    <MenuItem Header="_New Connection..." Name="menuNewConn"/>
+                    <MenuItem Header="_Quick Connect" Name="menuQuickConn"/>
                     <MenuItem Header="_Open Connection" Click="MenuItemOpen_Click" Name="menuOpen" />
                     <MenuItem Header="_Close Connection" Click="MenuItemClose_Click" Name="menuClose" />
                     <MenuItem Header="_Exit" Click="MenuItemExit_Click" Name="menuExit" />
@@ -58,8 +60,8 @@
                 </Border>
             </StackPanel>
             <Border BorderBrush="Black" BorderThickness="0,0,2,0">
-                <StackPanel DockPanel.Dock="Left" Width="150">
-                    <StackPanel Width="150">
+                <StackPanel DockPanel.Dock="Left" Width="200">
+                    <StackPanel Width="200">
                         <StackPanel.Background>
                             <ImageBrush ImageSource="Images\Connected.ico" AlignmentX="Center" AlignmentY="Center" Stretch="None"/>
                         </StackPanel.Background>
@@ -149,6 +151,9 @@
                 </TabItem>
                 <TabItem Header="Projects:">
 
+                </TabItem>
+                <TabItem Header="Tasks:">
+                    
                 </TabItem>
                 <TabItem Header="Change Log:">
 

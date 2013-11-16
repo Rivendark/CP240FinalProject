@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ee87cf350d9b4357b45af0f69f89c2d6" Name="Diagram1">
-        <EntityTypeShape EntityType="finalDBModel.DepartmentPosition" Width="1.5" PointX="5.875" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="finalDBModel.Department" Width="1.5" PointX="3.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="finalDBModel.EmployeeInfo" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="finalDBModel.Employee" Width="1.5" PointX="8.375" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="finalDBModel.ProjectPosition" Width="1.5" PointX="5.875" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="finalDBModel.Project" Width="1.5" PointX="3.625" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="finalDBModel.Task" Width="1.5" PointX="0.5" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="finalDBModel.Wage" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
-        <AssociationConnector Association="finalDBModel.FK__Departmen__Depar__145C0A3F" ManuallyRouted="false" />
-        <AssociationConnector Association="finalDBModel.FK__Employees__Posit__1920BF5C" ManuallyRouted="false" />
-        <AssociationConnector Association="finalDBModel.FK__EmployeeI__Emplo__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="finalDBModel.FK__Wages__EmployeeI__1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="finalDBModel.FK__ProjectPo__Proje__2D27B809" ManuallyRouted="false" />
+      <Diagram DiagramId="ec642329ddfc4d919716026a293fd493" Name="Diagram1">
+        <EntityTypeShape EntityType="finalDBModel.DepartmentPosition" Width="1.5" PointX="5.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.Department" Width="1.5" PointX="2.875" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.EmployeeInfo" Width="1.5" PointX="10.875" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.Employee" Width="1.5" PointX="8.125" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.ProjectPosition" Width="1.5" PointX="5.625" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.Project" Width="1.5" PointX="2.875" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.Task" Width="1.5" PointX="0.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="finalDBModel.Wage" Width="1.5" PointX="11" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="finalDBModel.FK__Departmen__Depar__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="finalDBModel.FK__Employees__Posit__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="finalDBModel.FK__EmployeeI__Emplo__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="finalDBModel.FK__Wages__EmployeeI__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="finalDBModel.FK__ProjectPo__Proje__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="finalDBModel.EmployeeProjects" ManuallyRouted="false" />
         <AssociationConnector Association="finalDBModel.TasksDepartmentLink" ManuallyRouted="false" />
         <AssociationConnector Association="finalDBModel.TasksDepartmentPositionLink" ManuallyRouted="false" />
