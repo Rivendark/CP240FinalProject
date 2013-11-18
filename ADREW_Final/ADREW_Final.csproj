@@ -92,6 +92,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DatabaseLogin.xaml.cs">
+      <DependentUpon>DatabaseLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Department.cs">
       <DependentUpon>finalDBModel.tt</DependentUpon>
     </Compile>
@@ -104,6 +107,7 @@
     <Compile Include="EmployeeInfo.cs">
       <DependentUpon>finalDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="finalDBContextPartial.cs" />
     <Compile Include="finalDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,11 +125,17 @@
     </Compile>
     <Compile Include="Models\CEInfo.cs" />
     <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="NewConnection.xaml.cs">
+      <DependentUpon>NewConnection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Project.cs">
       <DependentUpon>finalDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProjectPosition.cs">
       <DependentUpon>finalDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuickLogin.xaml.cs">
+      <DependentUpon>QuickLogin.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQL\SQLCommands.cs" />
     <Compile Include="SQL\SQLStoredProcedures.cs" />
@@ -139,6 +149,10 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="DatabaseLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -155,6 +169,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewConnection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuickLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\BaseDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,11 +228,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.Config" />
     <EntityDeploy Include="finalDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>finalDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="finalDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>finalDBModel.edmx</DependentUpon>

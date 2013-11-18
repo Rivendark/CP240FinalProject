@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using ADREW_Final.Models;
 using System.Diagnostics;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace ADREW_Final.ViewModels
 {
@@ -16,7 +18,7 @@ namespace ADREW_Final.ViewModels
         private ObservableCollection<CPosition> _DeptPosCol = new ObservableCollection<CPosition>();
 
         private MainWindow _Handle;
-        private finalDBEntities _EmpContext;
+        private finalDBEContext _EmpContext;
 
         public ObservableCollection<CEmployee> EmpCol
         {
@@ -26,7 +28,9 @@ namespace ADREW_Final.ViewModels
         public ViewModelEmployee(MainWindow Handle)
         {
             _Handle = Handle;
-            using(_EmpContext = new finalDBEntities()){
+
+            using (_EmpContext = new finalDBEContext(MainWindow.ConnectionString))
+            {
                 _Handle.LabelHost.Content = _EmpContext.Database.Connection.DataSource.ToString();
                 _Handle.LabelDatabase.Content = _EmpContext.Database.Connection.Database.ToString();
             }
@@ -36,11 +40,13 @@ namespace ADREW_Final.ViewModels
         public bool BindToClass(){
             try
             {
-                using (_EmpContext = new finalDBEntities()){
-                    foreach(var D in _EmpContext.Departments){
+                using (_EmpContext = new finalDBEContext(MainWindow.ConnectionString))
+                {
+                    foreach (var D in _EmpContext.Departments)
+                    {
                         _DeptCol.Add(new CDepartment(D as Department));
                     }
-                }
+                }                
             }
             catch
             {
@@ -50,13 +56,13 @@ namespace ADREW_Final.ViewModels
 
             try
             {
-                using (_EmpContext = new finalDBEntities())
+                using (_EmpContext = new finalDBEContext(MainWindow.ConnectionString))
                 {
                     foreach (var D in _EmpContext.DepartmentPositions)
                     {
                         _DeptPosCol.Add(new CPosition(D as DepartmentPosition));
                     }
-                }
+                }              
             }
             catch
             {
@@ -66,7 +72,7 @@ namespace ADREW_Final.ViewModels
 
             try
             {
-                using (_EmpContext = new finalDBEntities())
+                using (_EmpContext = new finalDBEContext(MainWindow.ConnectionString))
                 {
                     foreach (var E in _EmpContext.Employees)
                     {
@@ -89,8 +95,7 @@ namespace ADREW_Final.ViewModels
                         }
                         _EmpCol.Add(Emp);
                     }
-                }
-                
+                }                            
             }
             catch(SyntaxErrorException e)
             {

@@ -1,0 +1,24 @@
+﻿<Window x:Class="ADREW_Final.DatabaseLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DatabaseLogin" Height="230" Width="494">
+    <Grid Background="{StaticResource PrimaryBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Host:" Grid.Row="1" Style="{StaticResource OutputLabelStyle}" Margin="2"/>
+        <Label Content="Database:" Grid.Row="2" Style="{StaticResource OutputLabelStyle}" Margin="2"/>
+        <Label Content="Username:" Grid.Row="3" Style="{StaticResource OutputLabelStyle}" Margin="2"/>
+        <Label Content="Password:" Grid.Row="4" Style="{StaticResource OutputLabelStyle}" Margin="2"/>
+
+    </Grid>
+</Window>

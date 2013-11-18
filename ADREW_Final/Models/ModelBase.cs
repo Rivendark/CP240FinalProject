@@ -58,14 +58,14 @@ namespace ADREW_Final.Models
                 if (_IsChanged != value)
                 {
                     _IsChanged = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs("IsChanged"));
+                    //PropertyChanged(this, new PropertyChangedEventArgs("IsChanged"));
                 }
             }
         }
         /// <summary>
         /// public void AcceptChanges(){} User control to accept the changes.
         /// </summary>
-        public void AcceptChanges()
+        public virtual void AcceptChanges()
         {
             throw new NotImplementedException();
         }
@@ -76,7 +76,7 @@ namespace ADREW_Final.Models
         //Methods:
         //public void RejectChanges(){}.
         #region IRevertibleChangeTracking Methods
-        public void RejectChanges()
+        public virtual void RejectChanges()
         {
             throw new NotImplementedException();
         }

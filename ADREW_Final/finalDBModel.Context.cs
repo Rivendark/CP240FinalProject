@@ -15,10 +15,10 @@ namespace ADREW_Final
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class finalDBEntities : DbContext
+    public partial class finalDBEContext : DbContext
     {
-        public finalDBEntities()
-            : base("name=finalDBEntities")
+        public finalDBEContext()
+            : base("name=finalDBEContext")
         {
         }
     

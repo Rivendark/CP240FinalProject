@@ -677,7 +677,7 @@
           <End Role="ProjectPositions" Type="Self.ProjectPosition" Multiplicity="*" />
           <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="finalDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="finalDBEContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DepartmentPositions" EntityType="Self.DepartmentPosition" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="EmployeeInfoes" EntityType="Self.EmployeeInfo" />
@@ -747,7 +747,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="finalDBModelStoreContainer" CdmEntityContainer="finalDBEntities">
+        <EntityContainerMapping StorageEntityContainer="finalDBModelStoreContainer" CdmEntityContainer="finalDBEContext">
           <EntitySetMapping Name="DepartmentPositions">
             <EntityTypeMapping TypeName="finalDBModel.DepartmentPosition">
               <MappingFragment StoreEntitySet="DepartmentPositions">

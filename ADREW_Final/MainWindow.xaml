@@ -14,7 +14,7 @@
                 <MenuItem Header="_File">
                     <MenuItem Header="_New Connection..." Name="menuNewConn"/>
                     <MenuItem Header="_Quick Connect" Name="menuQuickConn"/>
-                    <MenuItem Header="_Open Connection" Click="MenuItemOpen_Click" Name="menuOpen" />
+                    <MenuItem Header="_Open Connection" Name="menuOpenConnection" />
                     <MenuItem Header="_Close Connection" Click="MenuItemClose_Click" Name="menuClose" />
                     <MenuItem Header="_Exit" Click="MenuItemExit_Click" Name="menuExit" />
                 </MenuItem>
